@@ -1,28 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+)
 
 func main() {
 
-	var shortGolang = "Watch Go crash course"
+	http.HandleFunc("/hello-go", helloUser)
 
-	var fullGolang = "Watch Nana's Golang Full course"
-
-	var rewardDessert = "Reward myself with a donut"
-
-	var taskItems = []string{shortGolang, fullGolang, rewardDessert}
-
-	fmt.Println("Welcome to Our TodoList App!!")
-	fmt.Println()
-
-	printTask(taskItems)
-	fmt.Println()
-	taskItems = addTask(taskItems, "Go for a run")
-	fmt.Println()
-	printTask(taskItems)
+	http.ListenAndServe(":8080", nil)
 
 }
 
+func helloUser(w http.ResponseWriter, r *http.Request) {
+
+	greeting := "Hello User! Welcome to TodoList App"
+	fmt.Fprintln(w, greeting)
+
+}
 func printTask(taskItems2 []string) {
 
 	fmt.Println("List of my Todos")
