@@ -13,5 +13,10 @@ func main() {
 	taskItems := []string{shortGolang, fullGolang, rewardDessert}
 
 	fmt.Println(taskItems)
-	fmt.Println(taskItems[0])
+	fmt.Println()
+
+	for i := 0; i < 3; i++ {
+		fmt.Println(taskItems[i])
+
+	}
 }
